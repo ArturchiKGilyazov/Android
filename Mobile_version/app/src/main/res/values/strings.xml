@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SpellIT</string>
+    <string name="username">Введите логин</string>
+    <string name="password">Введите пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="welcome">You are welcome!</string>
+    <string name="words">Изучение слов</string>
+    <string name="settings">Настройки</string>
+    <string name="vocabulary">Словарь слов</string>
+    <string name="error_user_not_exist">Ошибка: пользователь с таким логином и паролем не найден</string>
+    <string name="register_now">Зарегистрироваться</string>
+    <string name="register_successful">Регистрация прошла успешно</string>
+    <string name="register_failure">Ошибка: регистрация не удалась</string>
+    <string name="register_failure_repeating_password">Ошибка: Пароли не совпадают</string>
+    <string name="new_word">Новое слово</string>
+    <string name="new_category">Новая категория</string>
+</resources>

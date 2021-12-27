@@ -1,0 +1,2 @@
+rootProject.name = "SpellIT"
+include ':app'
