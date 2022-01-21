@@ -124,6 +124,7 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     override fun onDestroy() {
+        ::mTTS.isInitialized
         if (mTTS != null) {
             mTTS.stop()
             mTTS.shutdown()

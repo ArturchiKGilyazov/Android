@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_menu.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_register.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_settings.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_word_learning.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/words_item.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/menu/fragment_category_list.xml" value="0.27447916666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
