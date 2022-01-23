@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.Menu
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import project.spellit.R
 import project.spellit.activities.*
+import project.spellit.activities.viewmodels.CategoriesViewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -18,10 +20,12 @@ class CategoriesActivity : AppCompatActivity() {
     private lateinit var categoriesRecyclerView: RecyclerView
     private lateinit var addNewCategoryButton: Button
     private lateinit var categoriesWithId: ArrayList<Pair<Int?, String?>>
+    private lateinit var categoriesViewModel: CategoriesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories)
+        categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
 
         val linearLayoutManager = LinearLayoutManager(applicationContext)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL

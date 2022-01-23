@@ -7,18 +7,24 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import project.spellit.R
+import project.spellit.activities.viewmodels.MyViewModel
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var spinner: Spinner
+    private lateinit var viewModel: MyViewModel
     private val fonts: Array<String> = arrayOf("SERIF", "ITALIC", "DEFAULT_BOLD")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_settings)
         spinner = findViewById(R.id.spinner)
+
+        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+
+
 
         val adapter: ArrayAdapter<String> =
             ArrayAdapter(this, android.R.layout.simple_spinner_item, fonts)

@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import project.spellit.R
+import project.spellit.activities.viewmodels.MyViewModel
 import project.spellit.activities.words.*
 
 
@@ -24,10 +26,12 @@ class WordsActivity : AppCompatActivity() {
     private lateinit var category: String
     private val wordsList = ArrayList<Word>()
     private lateinit var addWordButton: Button
+    private lateinit var viewModel: MyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_words)
+        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
         addWordButton = findViewById(R.id.add_new_word)
 
@@ -70,7 +74,5 @@ class WordsActivity : AppCompatActivity() {
         wordsRecyclerView.adapter = adapter
 
         MainActivity.retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
-
-
     }
 }
