@@ -20,10 +20,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitWorker{
+
+
+    val key = MainActivity.session?.getToken()
     val httpClient = OkHttpClient.Builder().addInterceptor(
         Interceptor {
             val request =
-                it.request().newBuilder().addHeader("Authorization", "Bearer_").build()
+                it.request().newBuilder().addHeader("Authorization", "Bearer_$key").build()
             return@Interceptor it.proceed(request)
         }
     )

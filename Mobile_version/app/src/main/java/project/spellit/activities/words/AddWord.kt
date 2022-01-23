@@ -33,16 +33,6 @@ class AddWord : AppCompatActivity() {
             val word = AddWord()
             word.setWordName(wordEditText.text.toString())
 
-            val key = MainActivity.session?.getToken()
-            val httpClient = OkHttpClient.Builder()
-            httpClient.addInterceptor(
-                Interceptor {
-                    val request =
-                        it.request().newBuilder().addHeader("Authorization", "Bearer_$key").build()
-                    return@Interceptor it.proceed(request)
-                }
-            )
-
             dbhealper.insertWord(word.getWordName())
 
             val retrofitWorker = RetrofitWorker()

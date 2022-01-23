@@ -58,17 +58,6 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
                 Toast.makeText(this, "Поздравляю. Слово введено правильно", Toast.LENGTH_SHORT)
                     .show()
 
-                val key = MainActivity.session?.getToken()
-                val httpClient = OkHttpClient.Builder()
-                httpClient.addInterceptor(
-                    Interceptor {
-                        val request =
-                            it.request().newBuilder().addHeader("Authorization", "Bearer_$key")
-                                .build()
-                        return@Interceptor it.proceed(request)
-                    }
-                )
-
                 val retrofitWorker = RetrofitWorker()
                 retrofitWorker.reqvestLearningWord(wordId, this@WordLearning)
             } else {

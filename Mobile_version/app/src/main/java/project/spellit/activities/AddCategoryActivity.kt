@@ -23,16 +23,6 @@ class AddCategoryActivity : AppCompatActivity() {
         categoryNameEditText = findViewById(R.id.name_category_edit_text)
 
         addCategoryButton.setOnClickListener {
-            val key = MainActivity.session?.getToken()
-            val httpClient = OkHttpClient.Builder()
-            httpClient.addInterceptor(
-                Interceptor {
-                    val request =
-                        it.request().newBuilder().addHeader("Authorization", "Bearer_$key").build()
-                    return@Interceptor it.proceed(request)
-                }
-            )
-
 
             val addCategory = AddCategory()
             addCategory.setWordName(categoryNameEditText.text.toString())

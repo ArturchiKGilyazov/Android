@@ -5,12 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import project.spellit.R
 import project.spellit.activities.*
 import java.util.*
@@ -38,16 +35,8 @@ class CategoriesActivity : AppCompatActivity() {
 
         val key = MainActivity.session?.getToken()
         if (key == "") Log.d("Category Activity", "error: we have no token")
-        val httpClient = OkHttpClient.Builder()
-        httpClient.addInterceptor(
-            Interceptor {
-                val request =
-                    it.request().newBuilder().addHeader("Authorization", "Bearer_$key").build()
-                return@Interceptor it.proceed(request)
-            }
-        )
 
-        var categories: ArrayList<String?> = ArrayList()
+        val categories: ArrayList<String?> = ArrayList()
         categoriesWithId = ArrayList()
 
 
@@ -66,7 +55,7 @@ class CategoriesActivity : AppCompatActivity() {
         categoriesRecyclerView.adapter = adapter
 
         val retrofitWorker = RetrofitWorker()
-        retrofitWorker.reqvestCategory(httpClient, this@CategoriesActivity, adapter,
+        retrofitWorker.reqvestCategory(this@CategoriesActivity, adapter,
             categoriesWithId)
 
     }
