@@ -70,7 +70,7 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
                 )
 
                 val retrofitWorker = RetrofitWorker()
-                retrofitWorker.reqvestLearningWord(httpClient, wordId, this@WordLearning)
+                retrofitWorker.reqvestLearningWord(wordId, this@WordLearning)
             } else {
                 Toast.makeText(this, "Вы ошиблись :(", Toast.LENGTH_SHORT).show()
             }

@@ -39,7 +39,7 @@ class AddCategoryActivity : AppCompatActivity() {
             addCategory.setIsDefault(false)
 
             val retrofitWorker = RetrofitWorker()
-            retrofitWorker.reqvestAddCategory(httpClient, addCategory, this@AddCategoryActivity)
+            retrofitWorker.reqvestAddCategory(addCategory, this@AddCategoryActivity)
 
 
         }

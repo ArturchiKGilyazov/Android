@@ -81,8 +81,7 @@ class WordsActivity : AppCompatActivity() {
 
         val retrofitWorker = RetrofitWorker()
 
-        retrofitWorker.reqvestWord(httpClient.build(), category, adapter, wordsList,
-            this@WordsActivity)
+        retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
 
 
     }

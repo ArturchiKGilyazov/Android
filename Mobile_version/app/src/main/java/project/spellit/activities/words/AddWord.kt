@@ -46,7 +46,7 @@ class AddWord : AppCompatActivity() {
             dbhealper.insertWord(word.getWordName())
 
             val retrofitWorker = RetrofitWorker()
-            retrofitWorker.reqvestAddWord(httpClient, category, word, this@AddWord)
+            retrofitWorker.reqvestAddWord(category, word, this@AddWord)
         }
     }
 }
