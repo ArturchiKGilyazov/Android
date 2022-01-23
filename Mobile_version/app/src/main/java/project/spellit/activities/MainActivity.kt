@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         var session: Session? = null
         var systemTypeface: Typeface = Typeface.DEFAULT
+        val retrofitWorker = RetrofitWorker()
     }
 
 

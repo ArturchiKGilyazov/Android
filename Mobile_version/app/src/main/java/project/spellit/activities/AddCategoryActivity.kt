@@ -28,8 +28,7 @@ class AddCategoryActivity : AppCompatActivity() {
             addCategory.setWordName(categoryNameEditText.text.toString())
             addCategory.setIsDefault(false)
 
-            val retrofitWorker = RetrofitWorker()
-            retrofitWorker.reqvestAddCategory(addCategory, this@AddCategoryActivity)
+            MainActivity.retrofitWorker.reqvestAddCategory(addCategory, this@AddCategoryActivity)
 
 
         }

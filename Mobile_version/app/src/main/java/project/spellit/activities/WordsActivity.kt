@@ -66,10 +66,10 @@ class WordsActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
         wordsRecyclerView.adapter = adapter
 
-        val retrofitWorker = RetrofitWorker()
-        retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
+        MainActivity.retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
 
 
     }

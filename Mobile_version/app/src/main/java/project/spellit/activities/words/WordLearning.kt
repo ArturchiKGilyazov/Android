@@ -58,8 +58,7 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
                 Toast.makeText(this, "Поздравляю. Слово введено правильно", Toast.LENGTH_SHORT)
                     .show()
 
-                val retrofitWorker = RetrofitWorker()
-                retrofitWorker.reqvestLearningWord(wordId, this@WordLearning)
+                MainActivity.retrofitWorker.reqvestLearningWord(wordId, this@WordLearning)
             } else {
                 Toast.makeText(this, "Вы ошиблись :(", Toast.LENGTH_SHORT).show()
             }

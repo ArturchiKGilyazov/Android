@@ -54,8 +54,7 @@ class CategoriesActivity : AppCompatActivity() {
         })
         categoriesRecyclerView.adapter = adapter
 
-        val retrofitWorker = RetrofitWorker()
-        retrofitWorker.reqvestCategory(this@CategoriesActivity, adapter,
+        MainActivity.retrofitWorker.reqvestCategory(this@CategoriesActivity, adapter,
             categoriesWithId)
 
     }
