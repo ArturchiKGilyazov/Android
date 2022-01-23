@@ -2,6 +2,7 @@ package project.spellit.activities
 
 import android.util.Log
 import android.widget.Toast
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import project.spellit.R
 import project.spellit.activities.categories.CategoriesActivity
@@ -19,16 +20,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitWorker{
+    val httpClient = OkHttpClient.Builder().addInterceptor(
+        Interceptor {
+            val request =
+                it.request().newBuilder().addHeader("Authorization", "Bearer_").build()
+            return@Interceptor it.proceed(request)
+        }
+    )
+
+    val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
+        SERVER_URL
+    ).client(httpClient.build()).build()
 
     fun reqvestAddCategory(
-        httpClient: OkHttpClient.Builder,
         addCategory: AddCategory,
         addCategoryActivity: AddCategoryActivity
     ) {
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
         retrofit.create(JsonPlaceHolderApi::class.java).addCategory(
             Integer.parseInt(
                 MainActivity.session!!.getUserId()
@@ -61,15 +68,10 @@ class RetrofitWorker{
     }
 
     fun  reqvestAddWord(
-        httpClient: OkHttpClient.Builder,
         category: Int,
         word: project.spellit.network.jsons.AddWord,
         addWord: AddWord
     ) {
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
 
         retrofit.create(JsonPlaceHolderApi::class.java).addWord(
             category, word
@@ -93,16 +95,10 @@ class RetrofitWorker{
     }
 
     fun reqvestCategory(
-        httpClient: OkHttpClient.Builder,
         categoriesActivity: CategoriesActivity,
         adapter: CategoriesAdapter,
         categoriesWithId: ArrayList<Pair<Int?, String?>>
     ) {
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
-
         retrofit.create(JsonPlaceHolderApi::class.java).getCategoriesByUserId(
             Integer.parseInt(
                 MainActivity.session!!.getUserId()
@@ -133,15 +129,9 @@ class RetrofitWorker{
     }
 
     fun reqvestLearningWord(
-        httpClient: OkHttpClient.Builder,
         wordId: Int,
         wordLearning: WordLearning
     ) {
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
-
         retrofit.create(JsonPlaceHolderApi::class.java)
             .inputWordCorrect(wordId, Integer.parseInt(MainActivity.session!!.getUserId()))
             .enqueue(object : Callback<InputCorrectPojo> {
@@ -166,17 +156,11 @@ class RetrofitWorker{
     }
 
     fun reqvestWord(
-        httpClient: OkHttpClient,
         category: String,
         adapter: WordsAdapter,
         wordsList: ArrayList<Word>,
         wordsActivity: WordsActivity,
         ){
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient).build()
-
         retrofit.create(JsonPlaceHolderApi::class.java)
             .getWordsByCategoryId(Integer.parseInt(category))
             .enqueue(object : Callback<List<Words>> {
