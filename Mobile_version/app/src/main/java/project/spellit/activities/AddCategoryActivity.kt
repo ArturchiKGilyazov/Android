@@ -5,11 +5,8 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import project.spellit.R
 import project.spellit.activities.viewmodels.AddCategoryActivityModelView
-import project.spellit.network.jsons.AddCategory
 
 class AddCategoryActivity : AppCompatActivity() {
 
@@ -29,9 +26,7 @@ class AddCategoryActivity : AppCompatActivity() {
 
         addCategoryButton.setOnClickListener {
 
-            val addCategory = AddCategory()
-            addCategory.setWordName(categoryNameEditText.text.toString())
-            addCategory.setIsDefault(false)
+            val addCategory = viewModel.addCategory(categoryNameEditText.text.toString())
 
             MainActivity.retrofitWorker.reqvestAddCategory(addCategory, this@AddCategoryActivity)
 
