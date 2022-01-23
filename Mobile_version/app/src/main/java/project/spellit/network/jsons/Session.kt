@@ -3,7 +3,8 @@ package project.spellit.network.jsons
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class Session {
+object Session{
+
 
     @SerializedName("userId")
     @Expose

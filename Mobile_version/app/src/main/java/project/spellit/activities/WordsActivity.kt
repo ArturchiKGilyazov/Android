@@ -1,26 +1,16 @@
-package project.spellit.activities.words
+package project.spellit.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import project.spellit.R
-import project.spellit.activities.MainActivity
-import project.spellit.activities.SERVER_URL
-import project.spellit.network.JsonPlaceHolderApi
-import project.spellit.network.jsons.GetCategoriesByUserId
-import project.spellit.network.jsons.Words
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import project.spellit.activities.words.*
 
 
 const val CATEGORY_ID = "categoryID"
@@ -36,6 +26,7 @@ class WordsActivity : AppCompatActivity() {
     private lateinit var category: String
     private val wordsList = ArrayList<Word>()
     private lateinit var addWordButton: Button
+    val dbhealper = DBHelper(this, null, 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +34,10 @@ class WordsActivity : AppCompatActivity() {
 
         addWordButton = findViewById(R.id.add_new_word)
 
+
+
         val arguments = intent.extras
         category = arguments?.get(CATEGORY_ID).toString()
-        //val learned = arguments?.get(LEARNED) as Boolean
         Log.d("Words Activity", "Argument: $category")
 
         val linearLayoutManager = LinearLayoutManager(applicationContext)
@@ -90,38 +82,11 @@ class WordsActivity : AppCompatActivity() {
         })
         wordsRecyclerView.adapter = adapter
 
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
+        val retrofitWorker = RetrofitWorker()
 
-        retrofit.create(JsonPlaceHolderApi::class.java)
-            .getWordsByCategoryId(Integer.parseInt(category))
-            .enqueue(object : Callback<List<Words>> {
-                override fun onResponse(
-                    call: Call<List<Words>>,
-                    response: Response<List<Words>>
-                ) {
-                    Toast.makeText(
-                        this@WordsActivity,
-                        R.string.register_successful,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    for (item in response.body()!!) {
-                        adapter.addWord(item.getWordName())
-                        val word = Word()
-                        word.wordName = item.getWordName()
-                        word.wordId = item.getWordId()
-                        word.numOfRepeating = item.getNumOfRepeating() as Int?
-                        word.learned = item.getLearned() as Boolean
-                        wordsList.add(word)
-                    }
-                }
+        retrofitWorker.reqvestWord(httpClient.build(), category, adapter, wordsList,
+            this@WordsActivity)
 
-                override fun onFailure(call: Call<List<Words>>, t: Throwable) {
-                    Log.d("Categories Activity", "\n\n\n\n\n error \n\n\n")
-                    println(t.message)
-                }
-            })
+
     }
 }

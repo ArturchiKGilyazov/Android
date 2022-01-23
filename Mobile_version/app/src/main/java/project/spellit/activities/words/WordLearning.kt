@@ -8,15 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import project.spellit.R
-import project.spellit.activities.MainActivity
-import project.spellit.activities.SERVER_URL
-import project.spellit.network.JsonPlaceHolderApi
-import project.spellit.network.jsons.InputCorrectPojo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import project.spellit.activities.*
 import java.util.*
 
 class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -38,7 +30,6 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         val wordName = intent.extras?.get(WORD_NAME).toString()
         val wordId = Integer.parseInt(intent.extras?.get(WORD_ID).toString())
-        val numOfRepeating = Integer.parseInt(intent.extras?.get(NUM_OF_REPEATING).toString())
         val learning = intent.extras?.get(LEARNED) as Boolean
 
 
@@ -77,32 +68,9 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
                         return@Interceptor it.proceed(request)
                     }
                 )
-                val retrofit =
-                    Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                        SERVER_URL
-                    ).client(httpClient.build()).build()
 
-                retrofit.create(JsonPlaceHolderApi::class.java)
-                    .inputWordCorrect(wordId, Integer.parseInt(MainActivity.session?.getUserId()))
-                    .enqueue(object : Callback<InputCorrectPojo> {
-                        override fun onResponse(
-                            call: Call<InputCorrectPojo>,
-                            response: Response<InputCorrectPojo>
-                        ) {
-                            println("DEBUG")
-                            println("Correct: ${response.body()?.getLearned()}")
-
-                        }
-
-                        override fun onFailure(call: Call<InputCorrectPojo>, t: Throwable) {
-                            println(t.message)
-                            Toast.makeText(
-                                this@WordLearning,
-                                R.string.register_failure,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    })
+                val retrofitWorker = RetrofitWorker()
+                retrofitWorker.reqvestLearningWord(httpClient, wordId, this@WordLearning)
             } else {
                 Toast.makeText(this, "Вы ошиблись :(", Toast.LENGTH_SHORT).show()
             }
@@ -125,10 +93,8 @@ class WordLearning : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     override fun onDestroy() {
         ::mTTS.isInitialized
-        if (mTTS != null) {
-            mTTS.stop()
-            mTTS.shutdown()
-        }
+        mTTS.stop()
+        mTTS.shutdown()
         super.onDestroy()
     }
 }

@@ -1,6 +1,5 @@
 package project.spellit.activities
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -20,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var repeatPasswordEditText: EditText
     private lateinit var registerButton: Button
+    private lateinit var viewModel: ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.password_register)
         repeatPasswordEditText = findViewById(R.id.repeat_password)
         registerButton = findViewById(R.id.register_now_button)
+        viewModel = ViewModel(this)
 
         registerButton.setOnClickListener {
             if (passwordEditText.text.toString() == repeatPasswordEditText.text.toString()) {
@@ -36,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
                 user.setUsername(loginEditText.text.toString())
                 user.setPassword(passwordEditText.text.toString())
                 Log.d("New user:", "\n\n\n ${user.getUsername()}\n${user.getPassword()}\n\n\n")
-                postData(this, user)
+                viewModel.postData(user)
             } else {
                 Toast.makeText(
                     this,
@@ -47,20 +48,5 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun postData(context: Context, user: User) {
-        JavaNetworkService
-            .getInstance()
-            .jsonApi
-            .postData(user)
-            .enqueue(object : Callback<User> {
-                override fun onResponse(call: Call<User>, response: Response<User>) {
-                    Toast.makeText(context, R.string.register_successful, Toast.LENGTH_SHORT).show()
-                }
 
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    println(t.message)
-                    Toast.makeText(context, R.string.register_failure, Toast.LENGTH_SHORT).show()
-                }
-            })
-    }
 }

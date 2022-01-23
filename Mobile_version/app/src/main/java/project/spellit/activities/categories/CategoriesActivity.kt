@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,26 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import project.spellit.R
-import project.spellit.activities.AddCategoryActivity
-import project.spellit.activities.MainActivity
-import project.spellit.activities.SERVER_URL
-import project.spellit.activities.words.CATEGORY_ID
-import project.spellit.activities.words.WordsActivity
-import project.spellit.network.JavaNetworkService
-import project.spellit.network.JsonPlaceHolderApi
-import project.spellit.network.jsons.Category
-import project.spellit.network.jsons.GetAllUsers
-import project.spellit.network.jsons.GetCategoriesByUserId
-import project.spellit.network.jsons.Session
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.NumberFormatException
+import project.spellit.activities.*
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 
 class CategoriesActivity : AppCompatActivity() {
 
@@ -84,38 +65,9 @@ class CategoriesActivity : AppCompatActivity() {
         })
         categoriesRecyclerView.adapter = adapter
 
-        val retrofit =
-            Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl(
-                SERVER_URL
-            ).client(httpClient.build()).build()
-
-        retrofit.create(JsonPlaceHolderApi::class.java).getCategoriesByUserId(
-            Integer.parseInt(
-                MainActivity.session?.getUserId()
-            )
-        )
-            .enqueue(object : Callback<List<GetCategoriesByUserId>> {
-                override fun onResponse(
-                    call: Call<List<GetCategoriesByUserId>>,
-                    response: Response<List<GetCategoriesByUserId>>
-                ) {
-                    Toast.makeText(
-                        this@CategoriesActivity,
-                        R.string.register_successful,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    for (item in response.body()!!) {
-                        println("ADD CATEGORY + ${item.getName()}")
-                        adapter.categoryAdd(item.getName())
-                        categoriesWithId.add(Pair(item.getCategoryId(), item.getName()))
-                    }
-                }
-
-                override fun onFailure(call: Call<List<GetCategoriesByUserId>>, t: Throwable) {
-                    Log.d("Categories Activity", "\n\n\n\n\n error \n\n\n")
-                    println(t.message)
-                }
-            })
+        val retrofitWorker = RetrofitWorker()
+        retrofitWorker.reqvestCategory(httpClient, this@CategoriesActivity, adapter,
+            categoriesWithId)
 
     }
 
