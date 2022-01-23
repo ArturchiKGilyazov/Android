@@ -8,6 +8,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import project.spellit.R
 import project.spellit.activities.CATEGORY_ID
+import project.spellit.activities.DBHelper
 import project.spellit.activities.MainActivity
 import project.spellit.activities.RetrofitWorker
 import project.spellit.network.jsons.AddWord
@@ -20,6 +21,7 @@ class AddWord : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_word)
+        val dbhealper = DBHelper(this, null, 1)
 
         val category = Integer.parseInt(intent.extras?.get(CATEGORY_ID).toString())
         println(category)
@@ -41,7 +43,7 @@ class AddWord : AppCompatActivity() {
                 }
             )
 
-            //TODO Добавить сюда добавление слова в БД
+            dbhealper.insertWord(word.getWordName())
 
             val retrofitWorker = RetrofitWorker()
             retrofitWorker.reqvestAddWord(httpClient, category, word, this@AddWord)

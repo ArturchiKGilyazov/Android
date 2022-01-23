@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
         var systemTypeface: Typeface = Typeface.DEFAULT
     }
 
+
     private lateinit var username: EditText
     private lateinit var password: EditText
     private lateinit var loginButton: Button
     private lateinit var registerButton: Button
     private lateinit var viewModel: ViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

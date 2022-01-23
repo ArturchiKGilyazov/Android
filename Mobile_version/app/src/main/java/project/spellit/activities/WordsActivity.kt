@@ -26,15 +26,12 @@ class WordsActivity : AppCompatActivity() {
     private lateinit var category: String
     private val wordsList = ArrayList<Word>()
     private lateinit var addWordButton: Button
-    val dbhealper = DBHelper(this, null, 1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_words)
 
         addWordButton = findViewById(R.id.add_new_word)
-
-
 
         val arguments = intent.extras
         category = arguments?.get(CATEGORY_ID).toString()
