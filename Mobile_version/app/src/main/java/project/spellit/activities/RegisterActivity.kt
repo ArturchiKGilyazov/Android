@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import project.spellit.R
-import project.spellit.activities.viewmodels.RegisterActivityModelView
-import project.spellit.network.jsons.User
+import project.spellit.viewmodels.RegisterActivityModelView
+import project.spellit.repository.network.jsons.User
 
+
+//TODO Разделить всё на фрагменты
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var loginEditText: EditText
@@ -24,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         viewModel = ViewModelProvider(this).get(RegisterActivityModelView::class.java)
 
+
         loginEditText = findViewById(R.id.username_register)
         passwordEditText = findViewById(R.id.password_register)
         repeatPasswordEditText = findViewById(R.id.repeat_password)
@@ -31,17 +34,9 @@ class RegisterActivity : AppCompatActivity() {
 
         registerButton.setOnClickListener {
             if (passwordEditText.text.toString() == repeatPasswordEditText.text.toString()) {
-                val user = User()
-                user.setUsername(loginEditText.text.toString())
-                user.setPassword(passwordEditText.text.toString())
-                Log.d("New user:", "\n\n\n ${user.getUsername()}\n${user.getPassword()}\n\n\n")
-                viewModel.postData(user, this)
+                viewModel.postData(loginEditText.text.toString(), passwordEditText.text.toString())
             } else {
-                Toast.makeText(
-                    this,
-                    R.string.register_failure_repeating_password,
-                    Toast.LENGTH_SHORT
-                ).show()
+                viewModel.registrationFailed()
             }
         }
     }

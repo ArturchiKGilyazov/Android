@@ -3,13 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_add_category.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_add_word.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_categories.xml" value="0.196875" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_main.xml" value="0.15217391304347827" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_menu.xml" value="0.14375" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_register.xml" value="0.14375" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_settings.xml" value="0.14375" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_word_learning.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/activity_words.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/categories_item.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_add_category_button.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_add_category_edit.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_add_word_button.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_add_word_edit.xml" value="0.196875" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_button.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_button_login.xml" value="0.14010416666666667" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_button_register.xml" value="0.14010416666666667" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_button_settings.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_button_words.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_edi.xml" value="0.14010416666666667" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_main_edit.xml" value="0.14375" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_menu_button_learning.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_menu_button_register.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_menu_button_settings.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_menu_button_words.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_register_button.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_register_edit_text.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_setting_spiner.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_word_learning_button.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_word_learning_checkbox.xml" value="0.196875" />
+        <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/fragment_word_learning_edit.xml" value="0.196875" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/layout/words_item.xml" value="0.14375" />
         <entry key="..\:/Spellit/Android/Mobile_version/app/src/main/res/menu/fragment_category_list.xml" value="0.27447916666666666" />
       </map>

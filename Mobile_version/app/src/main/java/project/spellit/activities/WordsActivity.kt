@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import project.spellit.R
-import project.spellit.activities.viewmodels.MyViewModel
+import project.spellit.viewmodels.MyViewModel
 import project.spellit.activities.words.*
 
 
@@ -33,6 +33,8 @@ class WordsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_words)
         viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 
+        //TODO убрать эту хуйню во вьюМодель
+
         addWordButton = findViewById(R.id.add_new_word)
 
         val arguments = intent.extras
@@ -45,7 +47,7 @@ class WordsActivity : AppCompatActivity() {
         wordsRecyclerView.layoutManager = linearLayoutManager
 
         addWordButton.setOnClickListener {
-            val intent = Intent(this, AddWord::class.java)
+            val intent = Intent(this, AddWordActivity::class.java)
             intent.putExtra(CATEGORY_ID, category)
             startActivity(intent)
         }
@@ -53,12 +55,13 @@ class WordsActivity : AppCompatActivity() {
         val key = MainActivity.session?.getToken()
         if (key == "") Log.d("Category Activity", "error: we have no token")
 
+        
         val words = ArrayList<String?>()
 
         val adapter = WordsAdapter(words, object : WordsClickListener {
             override fun onClicked(word: String) {
                 Log.d("Words Activity", "Clicked $word")
-                val intent = Intent(this@WordsActivity, WordLearning::class.java)
+                val intent = Intent(this@WordsActivity, WordLearningActivity::class.java)
                 for (item in wordsList) {
                     if (item.wordName == word) {
                         intent.putExtra(WORD_ID, item.wordId)
@@ -73,6 +76,7 @@ class WordsActivity : AppCompatActivity() {
 
         wordsRecyclerView.adapter = adapter
 
+        //TODO сделать через нормальное mvvm
         MainActivity.retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
     }
 }

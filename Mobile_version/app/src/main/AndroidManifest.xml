@@ -19,12 +19,12 @@
         </activity>
         <activity android:name=".activities.MenuActivity" />
         <activity android:name=".activities.RegisterActivity" />
-        <activity android:name=".activities.categories.CategoriesActivity" />
-        <activity android:name=".activities.words.WordsActivity" />
+        <activity android:name=".activities.CategoriesActivity" />
         <activity android:name=".activities.AddCategoryActivity" />
-        <activity android:name=".activities.words.WordLearning" />
-        <activity android:name=".activities.words.AddWord" />
+        <activity android:name=".activities.WordLearningActivity" />
+        <activity android:name=".activities.AddWordActivity" />
         <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.WordsActivity" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

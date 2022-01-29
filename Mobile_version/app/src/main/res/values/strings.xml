@@ -16,4 +16,19 @@
     <string name="register_failure_repeating_password">Ошибка: Пароли не совпадают</string>
     <string name="new_word">Новое слово</string>
     <string name="new_category">Новая категория</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_name_category">Введите название категории</string>
+    <string name="add_category">Добавить категорию</string>
+    <string name="Category">Название</string>
+    <string name="new_word">Новое слово</string>
+    <string name="learning">Выучено</string>
+    <string name="add_word">Добавить</string>
+    <string name="write_word">Введите слово</string>
+    <string name="choose_shrift">Выберите шрифт</string>
+    <string name="what_is_the_word">Угадайте слово</string>
+    <string name="input_word">Введите слово</string>
+    <string name="check_input">Проверить</string>
+    <string name="play">Воспроизвести</string>
+    <string name="learning">Выучено</string>
 </resources>

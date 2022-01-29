@@ -7,41 +7,39 @@
     android:visibility="visible"
     tools:context=".activities.MenuActivity">
 
-    <Button
+    <fragment
         android:id="@+id/words_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/words"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.25"
+        tools:layout="@layout/fragment_menu_button_words" />
 
-    <Button
+    <fragment
         android:id="@+id/vocabulary_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/vocabulary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/words_button"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2"
+        tools:layout="@layout/fragment_menu_button_learning"/>
 
-    <Button
+    <fragment
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vocabulary_button"
-        app:layout_constraintVertical_bias="0.296" />
+        app:layout_constraintVertical_bias="0.25"
+        tools:layout="@layout/fragment_menu_button_settings"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

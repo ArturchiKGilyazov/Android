@@ -10,11 +10,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import project.spellit.R
-import project.spellit.activities.viewmodels.MainActivityModelView
-import project.spellit.network.jsons.Session
+import project.spellit.repository.RetrofitWorker
+import project.spellit.viewmodels.MainActivityModelView
+import project.spellit.repository.network.jsons.Session
 
 const val SERVER_URL: String = "http://192.168.56.1"
 
+
+//TODO Разделить всё на фрагменты
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -36,17 +39,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainActivityModelView::class.java)
 
-
         username = findViewById(R.id.username)
         password = findViewById(R.id.password)
         loginButton = findViewById(R.id.login_button)
-        registerButton = findViewById(R.id.register_button)
+        registerButton = findViewById(R.id.register_now_button)
 
         loginButton.setOnClickListener { view: View ->
             viewModel.login(username.text.toString(), password.text.toString(), this)
             if (!(session?.getUsername().equals("")) and !(session?.getToken().equals("")))
                 startMenuActivity()
-            else Toast.makeText(this, R.string.error_user_not_exist, Toast.LENGTH_SHORT).show()
+            else
+                viewModel.loginError()
         }
 
         registerButton.setOnClickListener { view: View ->
