@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import project.spellit.R
 
-class MainFragmentEditText: Fragment() {
+class AddWordFragmentEdit: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main_edit, container, false)
+        return inflater.inflate(R.layout.fragment_add_word_edit, container, false)
     }
 }

@@ -13,7 +13,6 @@ import project.spellit.viewmodels.MenuActivityModelView
 import project.spellit.viewmodels.MyViewModel
 
 
-//TODO Разделить всё на фрагменты
 class MenuActivity : AppCompatActivity() {
 
     private lateinit var wordsButton: Button

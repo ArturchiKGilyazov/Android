@@ -9,7 +9,6 @@ import project.spellit.R
 import project.spellit.viewmodels.AddWordModelView
 
 
-//TODO Разделить всё на фрагменты
 class AddWordActivity : AppCompatActivity() {
 
     private lateinit var addWordButton: Button
@@ -28,7 +27,7 @@ class AddWordActivity : AppCompatActivity() {
         wordEditText = findViewById(R.id.add_word_input_text)
 
         addWordButton.setOnClickListener {
-            viewModel.addWord(wordEditText.text.toString(), this@AddWordActivity)
+            viewModel.addWord(wordEditText.text.toString())
         }
     }
 }

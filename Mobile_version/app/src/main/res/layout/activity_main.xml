@@ -8,6 +8,7 @@
     tools:context=".activities.MainActivity">
 
     <fragment
+        android:name="project.spellit.activities.fragments.AddWordFragmentEdit"
         android:id="@+id/fragment_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
         tools:layout="@layout/fragment_main_edit" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.MainFragmentButtonLogin"
         android:id="@+id/fragment_button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +31,7 @@
         tools:layout="@layout/fragment_main_button_login" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.MainFragmentButtonRegister"
         android:id="@+id/fragment_button_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

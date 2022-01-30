@@ -13,7 +13,6 @@ import project.spellit.R
 import project.spellit.viewmodels.SettingViewModel
 
 
-//TODO Разделить всё на фрагменты
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var spinner: Spinner
@@ -25,7 +24,6 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
         spinner = findViewById(R.id.spinner)
         viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
-//        viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
 
         viewModel.chooseShrift(spinner)
 

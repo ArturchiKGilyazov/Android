@@ -8,6 +8,7 @@
     tools:context=".activities.RegisterActivity">
 
     <fragment
+        android:name="project.spellit.activities.fragments.RegisterFragmentEdit"
         android:id="@+id/fragment_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
         tools:layout="@layout/fragment_register_edit_text" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.RegisterFragmentButton"
         android:id="@+id/register_now_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

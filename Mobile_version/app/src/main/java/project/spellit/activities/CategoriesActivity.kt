@@ -18,7 +18,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-//TODO Разделить всё на фрагменты
 class CategoriesActivity : AppCompatActivity() {
 
     private lateinit var categoriesRecyclerView: RecyclerView
@@ -31,7 +30,6 @@ class CategoriesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_categories)
         viewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
 
-        //TODO реализовать всё это через вьюмодель
         val linearLayoutManager = LinearLayoutManager(applicationContext)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         categoriesRecyclerView = findViewById(R.id.categories_recycler_view)
@@ -63,10 +61,7 @@ class CategoriesActivity : AppCompatActivity() {
 
         categoriesRecyclerView.adapter = adapter
 
-        //TODO реализовать всё через нормальный ретрофит
-        MainActivity.retrofitWorker.reqvestCategory(this@CategoriesActivity, adapter,
-            categoriesWithId)
-
+        viewModel.reqCategory(adapter, categoriesWithId)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

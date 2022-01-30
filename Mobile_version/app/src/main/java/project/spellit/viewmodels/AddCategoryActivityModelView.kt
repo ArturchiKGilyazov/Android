@@ -13,7 +13,7 @@ class AddCategoryActivityModelView(application: Application) : AndroidViewModel(
         addCategory.setWordName(categoryName)
         addCategory.setIsDefault(false)
 
-        MainActivity.retrofitWorker.reqvestAddCategory(addCategory, getApplication())
+        Repository.retrofitWorker.reqvestAddCategory(addCategory, getApplication())
 
         return addCategory
     }

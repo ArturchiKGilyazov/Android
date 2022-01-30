@@ -2,6 +2,8 @@ package project.spellit.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import project.spellit.activities.categories.CategoriesAdapter
+import project.spellit.repository.Repository
 
 class CategoriesViewModel(application: Application) : AndroidViewModel(application) {
     fun returnCategoryList(category: String?, categoriesWithId: ArrayList<Pair<Int?, String?>>): Int {
@@ -11,6 +13,12 @@ class CategoriesViewModel(application: Application) : AndroidViewModel(applicati
         }
 
         return categoryId;
+    }
+
+    fun reqCategory(adapter: CategoriesAdapter, categoriesWithId: ArrayList<Pair<Int?, String?>>) {
+        Repository.retrofitWorker.reqvestCategory(getApplication(), adapter,
+            categoriesWithId)
+
     }
 
 }

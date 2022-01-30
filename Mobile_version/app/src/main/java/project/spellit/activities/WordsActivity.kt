@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import project.spellit.R
-import project.spellit.viewmodels.MyViewModel
 import project.spellit.activities.words.*
+import project.spellit.viewmodels.WordsViewModel
 
 
 const val CATEGORY_ID = "categoryID"
@@ -26,14 +26,12 @@ class WordsActivity : AppCompatActivity() {
     private lateinit var category: String
     private val wordsList = ArrayList<Word>()
     private lateinit var addWordButton: Button
-    private lateinit var viewModel: MyViewModel
+    private lateinit var viewModel: WordsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_words)
-        viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
-
-        //TODO убрать эту хуйню во вьюМодель
+        viewModel = ViewModelProvider(this).get(WordsViewModel::class.java)
 
         addWordButton = findViewById(R.id.add_new_word)
 
@@ -61,22 +59,14 @@ class WordsActivity : AppCompatActivity() {
         val adapter = WordsAdapter(words, object : WordsClickListener {
             override fun onClicked(word: String) {
                 Log.d("Words Activity", "Clicked $word")
-                val intent = Intent(this@WordsActivity, WordLearningActivity::class.java)
-                for (item in wordsList) {
-                    if (item.wordName == word) {
-                        intent.putExtra(WORD_ID, item.wordId)
-                        intent.putExtra(WORD_NAME, item.wordName)
-                        intent.putExtra(NUM_OF_REPEATING, item.numOfRepeating)
-                        intent.putExtra(LEARNED, item.learned)
-                    }
-                }
-                startActivity(intent)
+
+
+                startActivity(viewModel.makeWordlist(word, wordsList))
             }
         })
 
         wordsRecyclerView.adapter = adapter
 
-        //TODO сделать через нормальное mvvm
-        MainActivity.retrofitWorker.reqvestWord(category, adapter, wordsList, this@WordsActivity)
+        viewModel.getWords(adapter)
     }
 }

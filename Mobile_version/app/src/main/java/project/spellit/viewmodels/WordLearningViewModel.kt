@@ -1,11 +1,13 @@
 package project.spellit.viewmodels
 
 import android.app.Application
+import android.database.sqlite.SQLiteException
 import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import project.spellit.activities.MainActivity
+import project.spellit.repository.Repository
 import java.util.*
 
 class WordLearningViewModel(application: Application) : AndroidViewModel(application), TextToSpeech.OnInitListener {
@@ -17,8 +19,11 @@ class WordLearningViewModel(application: Application) : AndroidViewModel(applica
         Toast.makeText(getApplication(), "Поздравляю. Слово введено правильно", Toast.LENGTH_SHORT)
             .show()
 
-        //TODO make right retrofit
-        MainActivity.retrofitWorker.reqvestLearningWord(wordId, getApplication())
+        try {
+            Repository.db?.wordDAO()?.getWordById(wordId)
+        } catch (e: SQLiteException){
+            print("Get Word Failed")
+        }
     }
 
     fun wrongWord(){

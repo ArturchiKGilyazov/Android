@@ -201,41 +201,5 @@ class RetrofitWorker{
             })
     }
 
-    fun reqvestWord(
-        category: String,
-        adapter: WordsAdapter,
-        wordsList: ArrayList<Word>,
-        wordsActivity: WordsActivity,
-        ){
-        retrofit.create(JsonPlaceHolderApi::class.java)
-            .getWordsByCategoryId(Integer.parseInt(category))
-            .enqueue(object : Callback<List<Words>> {
-                override fun onResponse(
-                    call: Call<List<Words>>,
-                    response: Response<List<Words>>
-                ) {
-                    Toast.makeText(
-                        wordsActivity,
-                        R.string.register_successful,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    for (item in response.body()!!) {
-                        adapter.addWord(item.getWordName())
-                        val word = Word()
-                        word.wordName = item.getWordName()
-                        word.wordId = item.getWordId()
-                        word.numOfRepeating = item.getNumOfRepeating()
-                        word.learned = item.getLearned() as Boolean
-                        wordsList.add(word)
-                    }
-                }
-
-                override fun onFailure(call: Call<List<Words>>, t: Throwable) {
-                    Log.d("Categories Activity", "\n\n\n\n\n error \n\n\n")
-                    println(t.message)
-                }
-            })
-
-    }
 
 }

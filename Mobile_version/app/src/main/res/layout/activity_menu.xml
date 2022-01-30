@@ -8,6 +8,7 @@
     tools:context=".activities.MenuActivity">
 
     <fragment
+        android:name="project.spellit.activities.fragments.MenuFragmentButtonLearning"
         android:id="@+id/words_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
         tools:layout="@layout/fragment_menu_button_words" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.MenuFragmentButtonWords"
         android:id="@+id/vocabulary_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +33,7 @@
         tools:layout="@layout/fragment_menu_button_learning"/>
 
     <fragment
+        android:name="project.spellit.activities.fragments.MenuFragmentButtonSetting"
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

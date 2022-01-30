@@ -12,7 +12,6 @@ import project.spellit.viewmodels.RegisterActivityModelView
 import project.spellit.repository.network.jsons.User
 
 
-//TODO Разделить всё на фрагменты
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var loginEditText: EditText

@@ -1,31 +1,32 @@
 package project.spellit.viewmodels
 
-import android.database.sqlite.SQLiteAbortException
-import android.util.Log
+import android.database.sqlite.SQLiteException
 import androidx.lifecycle.ViewModel
+import androidx.room.RoomDatabase
 import project.spellit.activities.AddWordActivity
 import project.spellit.activities.MainActivity
-import project.spellit.repository.DBHelper
+import project.spellit.repository.Repository
+import project.spellit.repository.database.WordEntity
 import project.spellit.repository.network.jsons.AddWord
 
 class AddWordModelView: ViewModel() {
-    fun addWord(wordEditText: String, addWord: AddWordActivity): AddWord {
 
-        val dbhealper = DBHelper(addWord, null, 1)
+    val repository =  MainActivity.repository
+
+    fun addWord(wordEditText: String): AddWord {
+
         val word = AddWord()
         word.setWordName(wordEditText)
 
+        val wordEntity = WordEntity(null, word.getWordName())
+
         try {
-            dbhealper.insertWord(word.getWordName())
+            Repository.db?.wordDAO()?.insertWord(wordEntity)
+        } catch (e: SQLiteException){
+            println("Insert Exception")
         }
-        catch (e: SQLiteAbortException){
-            Log.e("TriggerERROR", e.toString());
-        }
-
-
-        //TODO сделать это всё через БД
-        MainActivity.retrofitWorker.reqvestAddWord(category, word, this@AddWordActivity)
 
         return word
     }
+
 }

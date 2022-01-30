@@ -19,6 +19,7 @@
         app:layout_constraintVertical_bias="0" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.AddCategoryFragmentEdit"
         android:id="@+id/fragment_edit_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
         tools:layout="@layout/fragment_add_category_edit" />
 
     <fragment
+        android:name="project.spellit.activities.fragments.AddCategoryFragmentButton"
         android:id="@+id/fragment_button_add_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

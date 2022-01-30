@@ -8,57 +8,49 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import androidx.room.RoomDatabase
 import project.spellit.R
+import project.spellit.activities.fragments.MainFragmentButtonLogin
+import project.spellit.activities.fragments.MainFragmentButtonRegister
+import project.spellit.activities.fragments.MainFragmentEditText
+import project.spellit.repository.Repository
 import project.spellit.repository.RetrofitWorker
+import project.spellit.repository.database.WordDataBase
 import project.spellit.viewmodels.MainActivityModelView
 import project.spellit.repository.network.jsons.Session
 
 const val SERVER_URL: String = "http://192.168.56.1"
 
 
-//TODO Разделить всё на фрагменты
 class MainActivity : AppCompatActivity() {
 
     companion object {
         var session: Session? = null
         var systemTypeface: Typeface = Typeface.DEFAULT
-        val retrofitWorker = RetrofitWorker()
+        val repository = Repository()
     }
 
 
-    private lateinit var username: EditText
-    private lateinit var password: EditText
-    private lateinit var loginButton: Button
-    private lateinit var registerButton: Button
     private lateinit var viewModel: MainActivityModelView
+    var mainFragmentEditText = MainFragmentEditText()
+    var mainFragmentButtonLogin = MainFragmentButtonLogin()
+    var mainFragmentButtonRegister = MainFragmentButtonRegister()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainActivityModelView::class.java)
+        viewModel = ViewModelProvider(this)[MainActivityModelView::class.java]
+        Repository.db = Room.databaseBuilder(this, WordDataBase::class.java, "database").build()
 
-        username = findViewById(R.id.username)
-        password = findViewById(R.id.password)
-        loginButton = findViewById(R.id.login_button)
-        registerButton = findViewById(R.id.register_now_button)
-
-        loginButton.setOnClickListener { view: View ->
-            viewModel.login(username.text.toString(), password.text.toString(), this)
-            if (!(session?.getUsername().equals("")) and !(session?.getToken().equals("")))
-                startMenuActivity()
-            else
-                viewModel.loginError()
-        }
-
-        registerButton.setOnClickListener { view: View ->
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
+        supportFragmentManager.beginTransaction().add(R.id.fragment_edit, mainFragmentEditText).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragment_button_login, mainFragmentButtonLogin).commit()
+        supportFragmentManager.beginTransaction().add(R.id.fragment_button_register, mainFragmentButtonRegister).commit()
     }
 
-    private fun startMenuActivity() {
-        startActivity(Intent(this, MenuActivity::class.java))
-    }
 
 }
