@@ -2,8 +2,6 @@ package project.spellit.viewmodels
 
 import android.database.sqlite.SQLiteException
 import androidx.lifecycle.ViewModel
-import androidx.room.RoomDatabase
-import project.spellit.activities.AddWordActivity
 import project.spellit.activities.MainActivity
 import project.spellit.repository.Repository
 import project.spellit.repository.database.WordEntity

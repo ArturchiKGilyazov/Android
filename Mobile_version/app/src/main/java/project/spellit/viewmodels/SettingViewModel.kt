@@ -16,16 +16,16 @@ class SettingViewModel(application: Application) : AndroidViewModel(application)
 
     private val fonts: Array<String> = arrayOf("SERIF", "ITALIC", "DEFAULT_BOLD")
 
-    fun chooseShrift(spinner: Spinner) {
+    fun chooseShrift(spinner: Spinner?) {
         val adapter: ArrayAdapter<String> =
             ArrayAdapter(getApplication(), R.layout.simple_spinner_item, fonts)
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+        spinner?.adapter = adapter
 
-        println(spinner.selectedItem)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        println(spinner?.selectedItem)
+        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                when (spinner.selectedItem.toString()) {
+                when (spinner?.selectedItem.toString()) {
                     "SERIF" -> MainActivity.systemTypeface = Typeface.SERIF
                     "ITALIC" -> MainActivity.systemTypeface = Typeface.MONOSPACE
                     "DEFAULT_BOLD" -> MainActivity.systemTypeface = Typeface.DEFAULT_BOLD

@@ -28,4 +28,5 @@
     <string name="check_input">Проверить</string>
     <string name="play">Воспроизвести</string>
     <string name="learning">Выучено</string>
+    <string name="main_register">Зарегистрироваться</string>
 </resources>

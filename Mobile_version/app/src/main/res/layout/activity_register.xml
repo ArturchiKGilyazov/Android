@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal|center_vertical"
     tools:context=".activities.RegisterActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="project.spellit.activities.fragments.RegisterFragmentEdit"
         android:id="@+id/fragment_edit"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.3"
         tools:layout="@layout/fragment_register_edit_text" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="project.spellit.activities.fragments.RegisterFragmentButton"
         android:id="@+id/register_now_button"
         android:layout_width="wrap_content"

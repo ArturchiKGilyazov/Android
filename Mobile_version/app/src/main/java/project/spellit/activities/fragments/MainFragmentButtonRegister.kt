@@ -25,13 +25,11 @@ class MainFragmentButtonRegister: Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity()).get(MainActivityModelView::class.java)
+
         val view = inflater.inflate(R.layout.fragment_main_button_register, container, false)
 
-        viewModel = ViewModelProvider(activity!!).get(MainActivityModelView::class.java)
-
-        username = EditText(view.findViewById(R.id.username))
-        password = EditText(view.findViewById(R.id.password))
-        registerButton = Button(view.findViewById(R.id.register_button))
+        registerButton = view.findViewById(R.id.register_button) as Button
 
 
         registerButton.setOnClickListener {

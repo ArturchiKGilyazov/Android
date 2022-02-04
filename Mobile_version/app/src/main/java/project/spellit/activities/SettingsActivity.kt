@@ -15,17 +15,12 @@ import project.spellit.viewmodels.SettingViewModel
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var spinner: Spinner
     private lateinit var viewModel: SettingViewModel
-    private val fonts: Array<String> = arrayOf("SERIF", "ITALIC", "DEFAULT_BOLD")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-        spinner = findViewById(R.id.spinner)
         viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
-
-        viewModel.chooseShrift(spinner)
 
     }
 }

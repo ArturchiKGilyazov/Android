@@ -18,8 +18,8 @@ import project.spellit.viewmodels.MainActivityModelView
 
 
 class MainFragmentButtonLogin: Fragment() {
-    private lateinit var username: EditText
-    private lateinit var password: EditText
+    private var username: EditText? = null
+    private var password: EditText? = null
     private lateinit var loginButton: Button
 
     private lateinit var viewModel: MainActivityModelView
@@ -29,14 +29,16 @@ class MainFragmentButtonLogin: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_button_login, container, false)
-        username = EditText(view.findViewById(R.id.username))
-        password = EditText(view.findViewById(R.id.password))
-        loginButton = Button(view.findViewById(R.id.login_button))
 
-        viewModel = ViewModelProvider(activity!!).get(MainActivityModelView::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(MainActivityModelView::class.java)
 
+        loginButton = view.findViewById(R.id.login_button) as Button
+
+        username = view.findViewById(R.id.username1) as? EditText
+        password = view.findViewById(R.id.password1) as? EditText
         loginButton.setOnClickListener {
-            viewModel.login(username.text.toString(), password.text.toString(), viewModel.getApplication())
+//            startMenuActivity()
+            viewModel.login(username?.text.toString(), password?.text.toString())
             if (!(MainActivity.session?.getUsername().equals("")) and !(MainActivity.session?.getToken().equals("")))
                 startMenuActivity()
             else
@@ -45,6 +47,7 @@ class MainFragmentButtonLogin: Fragment() {
 
         return view
     }
+
     private fun startMenuActivity() {
         startActivity(Intent(viewModel.getApplication(), MenuActivity::class.java))
     }

@@ -7,8 +7,6 @@ import okhttp3.OkHttpClient
 import project.spellit.R
 import project.spellit.activities.*
 import project.spellit.activities.categories.CategoriesAdapter
-import project.spellit.activities.words.Word
-import project.spellit.activities.words.WordsAdapter
 import project.spellit.repository.network.JavaNetworkService
 import project.spellit.repository.network.JsonPlaceHolderApi
 import project.spellit.repository.network.jsons.*

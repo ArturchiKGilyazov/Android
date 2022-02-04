@@ -5,6 +5,6 @@ import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 
-class MenuActivityModelView : ViewModel() {
+class MenuActivityModelView(application: Application) : AndroidViewModel(application) {
 
 }

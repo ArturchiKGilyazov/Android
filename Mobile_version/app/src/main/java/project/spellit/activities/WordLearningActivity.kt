@@ -24,7 +24,7 @@ class WordLearningActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_word_learning)
+        setContentView(R.layout.activity_word_learning1)
         viewModel = ViewModelProvider(this).get(WordLearningViewModel::class.java)
 
         val wordName = intent.extras?.get(WORD_NAME).toString()

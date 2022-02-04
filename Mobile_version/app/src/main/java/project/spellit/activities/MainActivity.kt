@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
@@ -33,11 +34,10 @@ class MainActivity : AppCompatActivity() {
         val repository = Repository()
     }
 
-
     private lateinit var viewModel: MainActivityModelView
-    var mainFragmentEditText = MainFragmentEditText()
-    var mainFragmentButtonLogin = MainFragmentButtonLogin()
-    var mainFragmentButtonRegister = MainFragmentButtonRegister()
+
+    var fragmentManager = this.supportFragmentManager
+    var fragmentTransaction = fragmentManager.beginTransaction()
 
 
 
@@ -45,12 +45,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainActivityModelView::class.java]
-        Repository.db = Room.databaseBuilder(this, WordDataBase::class.java, "database").build()
 
-        supportFragmentManager.beginTransaction().add(R.id.fragment_edit, mainFragmentEditText).commit()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_button_login, mainFragmentButtonLogin).commit()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_button_register, mainFragmentButtonRegister).commit()
+
+//        Repository.db = Room.databaseBuilder(this, WordDataBase::class.java, "database").build()
     }
 
+    private fun startMenuActivity() {
+        startActivity(Intent(viewModel.getApplication(), MenuActivity::class.java))
+    }
 
 }

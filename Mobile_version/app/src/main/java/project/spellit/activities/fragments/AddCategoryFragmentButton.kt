@@ -17,8 +17,8 @@ import project.spellit.viewmodels.AddCategoryActivityModelView
 class AddCategoryFragmentButton: Fragment() {
     private lateinit var viewModel: AddCategoryActivityModelView
 
-    private lateinit var addCategoryButton: Button
-    private lateinit var categoryNameEditText: EditText
+    private var addCategoryButton: Button? = null
+    private var categoryNameEditText: EditText? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,13 +26,13 @@ class AddCategoryFragmentButton: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_category_button, container, false)
 
-        addCategoryButton = view.findViewById(R.id.add_new_category_button)
-        categoryNameEditText = EditText(view.findViewById(R.id.name_category_edit_text))
+        addCategoryButton = view.findViewById(R.id.add_new_category_button) as? Button
+        categoryNameEditText = view.findViewById(R.id.name_category_edit_text) as? EditText
 
-        viewModel = ViewModelProvider(activity!!).get(AddCategoryActivityModelView::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(AddCategoryActivityModelView::class.java)
 
-        addCategoryButton.setOnClickListener {
-            viewModel.addCategory(categoryNameEditText.text.toString())
+        addCategoryButton?.setOnClickListener {
+            viewModel.addCategory(categoryNameEditText?.text.toString())
         }
 
         return view

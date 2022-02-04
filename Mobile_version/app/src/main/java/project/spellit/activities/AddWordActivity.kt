@@ -11,8 +11,6 @@ import project.spellit.viewmodels.AddWordModelView
 
 class AddWordActivity : AppCompatActivity() {
 
-    private lateinit var addWordButton: Button
-    private lateinit var wordEditText: EditText
     private lateinit var viewModel: AddWordModelView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +20,5 @@ class AddWordActivity : AppCompatActivity() {
 
         val category = Integer.parseInt(intent.extras?.get(CATEGORY_ID).toString())
         println(category)
-
-        addWordButton = findViewById(R.id.add_new_word_button)
-        wordEditText = findViewById(R.id.add_word_input_text)
-
-        addWordButton.setOnClickListener {
-            viewModel.addWord(wordEditText.text.toString())
-        }
     }
 }

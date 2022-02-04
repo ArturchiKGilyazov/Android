@@ -25,16 +25,5 @@ class AddCategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_category)
         viewModel = ViewModelProvider(this)[AddCategoryActivityModelView::class.java]
 
-
-        supportFragmentManager.beginTransaction().add(R.id.fragment_button_add_category, addCategoryFragmentButton).commit()
-        supportFragmentManager.beginTransaction().add(R.id.fragment_edit_category, addCategoryFragmentEdit).commit()
-
-        addCategoryButton = findViewById(R.id.add_new_category_button)
-        categoryNameEditText = findViewById(R.id.name_category_edit_text)
-
-
-        addCategoryButton.setOnClickListener {
-            viewModel.addCategory(categoryNameEditText.text.toString())
-        }
     }
 }

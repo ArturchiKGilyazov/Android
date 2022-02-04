@@ -14,10 +14,6 @@ import project.spellit.repository.network.jsons.User
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var loginEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var repeatPasswordEditText: EditText
-    private lateinit var registerButton: Button
     private lateinit var viewModel: RegisterActivityModelView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,19 +21,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         viewModel = ViewModelProvider(this).get(RegisterActivityModelView::class.java)
 
-
-        loginEditText = findViewById(R.id.username_register)
-        passwordEditText = findViewById(R.id.password_register)
-        repeatPasswordEditText = findViewById(R.id.repeat_password)
-        registerButton = findViewById(R.id.register_now_button)
-
-        registerButton.setOnClickListener {
-            if (passwordEditText.text.toString() == repeatPasswordEditText.text.toString()) {
-                viewModel.postData(loginEditText.text.toString(), passwordEditText.text.toString())
-            } else {
-                viewModel.registrationFailed()
-            }
-        }
     }
 
 

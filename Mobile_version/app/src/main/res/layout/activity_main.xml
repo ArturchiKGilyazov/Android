@@ -7,30 +7,54 @@
     android:layout_gravity="center_horizontal|center_vertical"
     tools:context=".activities.MainActivity">
 
-    <fragment
-        android:name="project.spellit.activities.fragments.AddWordFragmentEdit"
-        android:id="@+id/fragment_edit"
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:name="project.spellit.activities.fragments.MainFragmentEditText"-->
+<!--        android:id="@+id/fragment_edit"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.3"-->
+<!--        tools:layout="@layout/fragment_main_edit" />-->
+    <EditText
+    android:id="@+id/username1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|center_horizontal"
+    android:hint="@string/username"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.257" />
+
+    <EditText
+        android:id="@+id/password1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:layout="@layout/fragment_main_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/username1"
+        app:layout_constraintVertical_bias="0.045" />
 
-    <fragment
+
+    <androidx.fragment.app.FragmentContainerView
         android:name="project.spellit.activities.fragments.MainFragmentButtonLogin"
         android:id="@+id/fragment_button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fragment_edit"
+        app:layout_constraintTop_toBottomOf="@id/password1"
         tools:layout="@layout/fragment_main_button_login" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:name="project.spellit.activities.fragments.MainFragmentButtonRegister"
         android:id="@+id/fragment_button_register"
         android:layout_width="wrap_content"

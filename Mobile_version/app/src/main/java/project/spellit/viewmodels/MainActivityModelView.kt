@@ -15,8 +15,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivityModelView(application: Application) : AndroidViewModel(application) {
-    fun login(username: String, password: String, mainActivity: MainActivity) {
-        Repository.retrofitWorker.login(username, password, mainActivity)
+    fun login(username: String, password: String) {
+        Repository.retrofitWorker.login(username, password, getApplication())
     }
 
     fun loginError() {
