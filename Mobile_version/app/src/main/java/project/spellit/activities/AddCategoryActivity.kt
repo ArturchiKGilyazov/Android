@@ -14,6 +14,7 @@ import project.spellit.viewmodels.AddCategoryActivityModelView
 class AddCategoryActivity : AppCompatActivity() {
 
 
+
     private lateinit var addCategoryButton: Button
     private lateinit var categoryNameEditText: EditText
     private lateinit var viewModel: AddCategoryActivityModelView
@@ -26,4 +27,6 @@ class AddCategoryActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[AddCategoryActivityModelView::class.java]
 
     }
+
+
 }
