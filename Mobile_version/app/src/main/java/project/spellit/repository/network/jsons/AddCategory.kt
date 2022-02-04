@@ -25,7 +25,7 @@ class AddCategory {
         return isDefault
     }
 
-    fun setIsDefault(isDefault: Boolean) {
+    fun setIsDefault() {
         this.isDefault = false
     }
 }

@@ -6,8 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [WordEntity::class], version = 1)
-@TypeConverters(DateTypeConvarter::class)
+@Database(entities = arrayOf(WordEntity::class), version = 1)
 abstract class WordDataBase: RoomDatabase() {
 
     abstract fun wordDAO(): WordDAO

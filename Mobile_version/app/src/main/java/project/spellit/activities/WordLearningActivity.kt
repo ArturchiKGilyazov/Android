@@ -6,7 +6,10 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import project.spellit.R
+import project.spellit.repository.Repository
+import project.spellit.repository.database.WordDataBase
 import project.spellit.viewmodels.WordLearningViewModel
 import java.util.*
 

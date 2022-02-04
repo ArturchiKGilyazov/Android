@@ -46,12 +46,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this)[MainActivityModelView::class.java]
 
-
-//        Repository.db = Room.databaseBuilder(this, WordDataBase::class.java, "database").build()
-    }
-
-    private fun startMenuActivity() {
-        startActivity(Intent(viewModel.getApplication(), MenuActivity::class.java))
     }
 
 }
